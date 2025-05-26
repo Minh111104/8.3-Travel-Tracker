@@ -16,14 +16,20 @@
 </head>
 
 <body>
-  <form action="/add" method="post">
-    <input type="text" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter country name'%>">
-    <button type="submit">Add</button>
-  </form>
-
-  <form action="/reset" method="post" style="display:inline;">
-    <button type="submit" style="margin-left:10px;">Reset</button>
-  </form>
+<!-- Styling Add and Reset buttons -->
+<div style="max-width: 400px; margin-bottom: 20px;">
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <input type="text" form="addForm" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter country name'%>">
+    <div style="display: flex; gap: 10px;">
+      <form id="addForm" action="/add" method="post" style="margin: 0;">
+        <button type="submit">ADD</button>
+      </form>
+      <form action="/reset" method="post" style="margin: 0;">
+        <button type="submit">RESET</button>
+      </form>
+    </div>
+  </div>
+</div>
 
   <section class="ag-canvas">
     <svg class="ag-canvas_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
