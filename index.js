@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
   res.render("index.ejs", { countries: countries, total: countries.length });
 });
 
-//INSERT new country
+// INSERT new countries
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
 
@@ -67,6 +67,12 @@ app.post("/add", async (req, res) => {
       error: "Country name does not exist, try again.",
     });
   }
+});
+
+// RESET visited countries
+app.post('/reset', async (req, res) => {
+  await db.query('DELETE FROM visited_countries');
+  res.redirect('/');
 });
 
 app.listen(port, () => {
